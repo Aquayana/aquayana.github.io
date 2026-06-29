@@ -1,0 +1,19 @@
+---
+layout: default
+title: "Test des 7 Chakras — Découvrez votre profil énergétique"
+description: "Test vibratoire gratuit : identifiez vos chakras en 5 minutes. Recevez des recommandations personnalisées et votre guide offert."
+---
+<style>main{padding:0!important}.quiz-page-wrapper{padding-top:70px}.quiz-frame{width:100%;min-height:100vh;border:none;display:block}</style>
+<div class="quiz-page-wrapper">
+  <iframe src="/quiz/chakras.html" class="quiz-frame" title="Test des 7 Chakras Aquayana" scrolling="yes" id="quiz-iframe"></iframe>
+</div>
+<script>
+(function(){
+  var f=document.getElementById('quiz-iframe');
+  if(!f)return;
+  f.addEventListener('load',function(){
+    try{f.style.height=f.contentWindow.document.body.scrollHeight+'px';}catch(e){f.style.height=Math.max(window.innerHeight,800)+'px';}
+    setTimeout(function(){try{f.style.height=f.contentWindow.document.body.scrollHeight+'px';}catch(e){}},1000);
+  });
+})();
+</script>
