@@ -1,0 +1,28 @@
+title: Aquayana
+description: "Bouteilles d'eau aux intentions vibratoires — Alignez votre énergie avec nos rituels personnalisés aux 7 chakras"
+url: "https://aquayana.fr"
+baseurl: ""
+lang: fr
+timezone: Europe/Paris
+permalink: /blog/:title/
+author:
+  name: Aquayana
+  email: contact@aquayana.fr
+instagram: aquayana
+tiktok: aquayana
+logo: /assets/images/logo.png
+social:
+  name: Aquayana
+  links:
+    - https://www.instagram.com/aquayana
+    - https://www.tiktok.com/@aquayana
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - _queue/
+  - node_modules/
