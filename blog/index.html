@@ -1,0 +1,39 @@
+---
+layout: default
+title: "Blog bien-être — Chakras, énergie et rituels vibratoires"
+description: "Découvrez nos articles sur les chakras, l'énergie vibratoire et les pratiques de bien-être pour aligner votre énergie au quotidien."
+permalink: /blog/
+---
+<section class="blog-listing">
+  <div class="listing-header">
+    <div class="section-eyebrow">Blog</div>
+    <h1>Rituels & Inspirations</h1>
+    <p>Explorez les chakras, l'énergie vibratoire et les pratiques de bien-être.</p>
+  </div>
+  <div class="section-container">
+    <div class="posts-grid">
+      {% for post in site.posts %}
+      <article class="post-item">
+        <a href="{{ post.url | relative_url }}" class="post-item-img {% unless post.image %}post-item-img-placeholder{% endunless %}" {% if post.image %}style="background-image:url('{{ post.image }}')"{% endif %}></a>
+        <div class="post-item-content">
+          {% if post.categories %}<span class="post-item-cat">{{ post.categories | first }}</span>{% endif %}
+          <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+          {% if post.description %}<p>{{ post.description | truncate: 140 }}</p>{% endif %}
+          <div class="post-item-footer">
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d %B %Y" }}</time>
+            <a href="{{ post.url | relative_url }}" class="read-more">Lire →</a>
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+      {% if site.posts.size == 0 %}
+      <div class="no-posts"><p>✨ Les premiers articles arrivent bientôt...</p><a href="/quiz/" class="btn-gold">Faire le test des chakras</a></div>
+      {% endif %}
+    </div>
+    <div class="newsletter-section"><div class="newsletter-content">
+      <h2>Ne manquez aucun article</h2>
+      <p>Recevez nos rituels et inspirations directement dans votre boîte mail</p>
+      <a href="/quiz/" class="btn-gold">Faire le test & recevoir le guide offert ✨</a>
+    </div></div>
+  </div>
+</section>
