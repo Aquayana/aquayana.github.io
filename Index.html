@@ -1178,25 +1178,17 @@
   <div class="results-header">
     <div class="tag">✦ Ton profil énergétique ✦</div>
     <h2 class="results-title">Diagnostic Révélé</h2>
-    <p class="results-intro">Voici l'état actuel de tes sept centres d'énergie vitale. Chaque déséquilibre est une invitation à te reconnecter à toi-même.</p>
+    <p class="results-intro">Voici l'état actuel de tes sept centres d'énergie vitale. Chaque chakra est évalué de façon indépendante — certains peuvent être en harmonie pendant que d'autres appellent à être accompagnés. Ce diagnostic reflète ton état énergétique à cet instant T : il est naturel que les résultats évoluent au fil de tes expériences de vie.</p>
   </div>
 
   <div class="results-body">
     <div class="results-grid" id="results-grid"></div>
 
-    <div id="conclusion-block" style="margin-bottom: 30px;"></div>
-
-    <div class="summary-box">
-      <div class="summary-title">✦ Ton Rituel Aquayana Personnalisé</div>
-      <p class="summary-text" id="summary-text">Basé sur ton profil unique, voici comment les eaux Aquayana peuvent accompagner ta transformation.</p>
-      <button class="btn-restart" onclick="restart()">↺ Recommencer le diagnostic</button>
-    </div>
-
-    <!-- SOFT GATE — EMAIL CAPTURE -->
+    <!-- SOFT GATE — EMAIL CAPTURE (avant la synthèse et le rituel) -->
     <div class="soft-gate" id="soft-gate">
       <div class="soft-gate-inner">
         <div class="soft-gate-tag">✦ Cadeau Personnalisé ✦</div>
-        <h3 class="soft-gate-title">Reçois ton Guide PDF<br>Diagnostic & Rituel sur 21 Jours</h3>
+        <h3 class="soft-gate-title">Tu souhaites en savoir plus ?<br>Tu ne sais pas par où commencer ?<br>Reçois ton guide...</h3>
         <p class="soft-gate-desc">Ton profil énergétique unique mérite une analyse approfondie. Reçois gratuitement ton guide PDF personnalisé, conçu spécifiquement pour ton chakra prioritaire.</p>
 
         <div class="soft-gate-perks">
@@ -1223,8 +1215,16 @@
       </div>
     </div>
 
+    <div id="conclusion-block" style="margin-bottom: 30px;"></div>
+
+    <div class="summary-box">
+      <div class="summary-title">✦ Ton Rituel Aquayana Personnalisé</div>
+      <p class="summary-text" id="summary-text">Basé sur ton profil unique, voici comment les eaux Aquayana peuvent accompagner ta transformation.</p>
+      <button class="btn-restart" onclick="restart()">↺ Recommencer le diagnostic</button>
+    </div>
+
     <div class="disclaimer">
-      Ces affirmations sont des outils d'exploration de bien-être personnel et de connaissance de soi. Elles ne constituent pas un diagnostic médical et ne remplacent en aucun cas l'avis d'un professionnel de santé. Les eaux Aquayana sont des pratiques de rituel et d'intention personnelle.
+      Ce diagnostic reflète ton état énergétique à un instant T. Il est normal que tes résultats changent au fil du temps, en fonction des événements de ta vie, de ta pratique et de ta progression. Tu peux refaire ce test à tout moment pour observer ton évolution. — Ces affirmations sont des outils d'exploration de bien-être personnel et de connaissance de soi. Elles ne constituent pas un diagnostic médical et ne remplacent en aucun cas l'avis d'un professionnel de santé. Les eaux Aquayana sont des pratiques de rituel et d'intention personnelle.
     </div>
   </div>
 </div>
@@ -1689,7 +1689,7 @@ function computeResults() {
       sous += answers[`${chakra.id}_sous_${i}`] || 0;
       sur += answers[`${chakra.id}_sur_${i}`] || 0;
     }
-    const threshold = 13; // out of 25 (~52%)
+    const threshold = 15; // out of 25 (60%) — en dessous = équilibré
     const isSous = sous >= threshold;
     const isSur = sur >= threshold;
     let state;
@@ -1870,7 +1870,6 @@ function buildConclusion(results, sortedDys, balancedCount) {
   el.innerHTML = `
     <div class="conclusion-section">
       <div class="conclusion-tag">✦ Synthèse & Recommandation Personnalisée</div>
-      <div class="conclusion-title">Par où commencer ?</div>
 
       <div class="priority-chakra-card">
         <div class="priority-label">⭐ Priorité N°1 — Chakra à travailler en premier</div>
