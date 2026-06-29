@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  {% include head.html %}
+</head>
+<body>
+  {% include nav.html %}
+  <main>
+    <article class="post-body" itemscope itemtype="https://schema.org/BlogPosting">
+      <meta itemprop="datePublished" content="{{ page.date | date_to_xmlschema }}">
+      <meta itemprop="author" content="Aquayana">
+
+      {% if page.image %}
+      <div class="post-hero" style="background-image: url('{{ page.image }}');" role="img" aria-label="{{ page.title }}"></div>
+      {% endif %}
+
+      <div class="post-content-wrapper">
+        <header class="post-header">
+          {% if page.categories %}
+          <div class="post-category">{{ page.categories | first }}</div>
+          {% endif %}
+          <h1 itemprop="headline">{{ page.title }}</h1>
+          <div class="post-meta">
+            <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d %B %Y" }}</time>
+            {% if page.reading_time %} · {{ page.reading_time }} min de lecture{% endif %}
+          </div>
+          {% if page.description %}
+          <p class="post-intro">{{ page.description }}</p>
+          {% endif %}
+        </header>
+
+        <div itemprop="articleBody">
+          {{ content }}
+        </div>
+
+        <!-- Quiz CTA -->
+        <div class="post-quiz-cta">
+          <div class="quiz-cta-content">
+            <p class="quiz-cta-tag">✨ Découverte</p>
+            <h3>Quel est votre chakra dominant ?</h3>
+            <p>Notre test vibratoire gratuit révèle votre profil énergétique et vous guide vers les rituels qui vous correspondent vraiment.</p>
+            <a href="{{ '/quiz/' | relative_url }}" class="btn-gold">Faire le test gratuit →</a>
+          </div>
+        </div>
+
+        <!-- Instagram CTA -->
+        <div class="post-instagram-cta">
+          <p class="instagram-cta-emoji">📸</p>
+          <h3>Rejoignez notre communauté</h3>
+          <p>Rituels quotidiens, intentions et inspirations bien-être sur Instagram</p>
+          <a href="https://www.instagram.com/aquayana" target="_blank" rel="noopener" class="btn-instagram">
+            Suivre @aquayana
+          </a>
+        </div>
+
+        {% if page.related_posts %}
+        <section class="related-posts">
+          <h2>Articles associés</h2>
+          <div class="related-grid">
+            {% for post_path in page.related_posts %}
+              {% assign related = site.posts | where: "url", post_path | first %}
+              {% if related %}
+              <a href="{{ related.url | relative_url }}" class="related-card">
+                {% if related.image %}
+                <div class="related-img" style="background-image: url('{{ related.image }}')"></div>
+                {% endif %}
+                <div class="related-text">
+                  <span class="related-category">{{ related.categories | first }}</span>
+                  <h4>{{ related.title }}</h4>
+                </div>
+              </a>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </section>
+        {% endif %}
+
+      </div>
+    </article>
+  </main>
+  {% include footer.html %}
+</body>
+</html>
